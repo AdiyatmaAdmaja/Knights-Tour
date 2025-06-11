@@ -7,14 +7,17 @@ import Util.KnightTour;
 import pieces.Kuda;
 
 public class Papan extends JPanel {
+    
+    // Deklarasi variabel untuk ukuran papan
     public int ukuranPetak = 100;
     int cols = 8;
     int rows = 8;
-
+    // Deklarasi variabel untuk menyimpan solusi Knight's Tour dan logika Knight's Tour
     private int[][] knightTourSolution;
     private KnightTour ktLogic;
     private boolean tourStarted = false;
-
+    
+    // Konstruktor Papan
     public Papan() { //
         this.setPreferredSize(new Dimension(cols * ukuranPetak, rows * ukuranPetak));
         ktLogic = new KnightTour(); //
@@ -25,6 +28,7 @@ public class Papan extends JPanel {
         });
     }
 
+    // Handler untuk menerima input User
     private void knightTourMousePressed(java.awt.event.MouseEvent evt) {
         if (tourStarted)
             return;
@@ -47,6 +51,7 @@ public class Papan extends JPanel {
         repaint();
     }
 
+    // Method untuk mengembalikan papan ke kondisi awal
     public void restartKnightTour() {
         this.knightTourSolution = null;
         this.tourStarted = false;
@@ -55,6 +60,7 @@ public class Papan extends JPanel {
         repaint();
     }
 
+    // Method untuk menggambar papan catur
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
@@ -65,12 +71,12 @@ public class Papan extends JPanel {
                 g2d.fillRect(c * ukuranPetak, r * ukuranPetak, ukuranPetak, ukuranPetak);
             }
 
-        // Pengecekan gameMode dihapus
         if (knightTourSolution != null && tourStarted) { //
             drawKnightTourSolution(g2d);
         }
     }
 
+    // Method untuk menggambar solusi Knight's Tour
     private void drawKnightTourSolution(Graphics2D g2d) {
         Point[] path = new Point[65];
         for (int r = 0; r < rows; r++) {

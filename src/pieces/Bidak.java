@@ -45,7 +45,7 @@ public class Bidak {
 
     Papan board;
 
-    // Fungsi-fungsi untuk menggabungka Bidak ke Papan
+    // Fungsi-fungsi untuk menggabungkan Bidak ke Papan
     public Bidak(Papan board) {
         this.board = board;
     }
